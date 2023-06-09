@@ -27,6 +27,6 @@ jobs:
       run: |
         javac Task.java
         javac Login.java
-        javac -cp .:junit-platform-console-standalone-1.7.2.jar TaskTest.java
-        java -jar junit-platform-console-standalone-1.7.2.jar --class-path . --scan-classpath
+        javac -cp .:junit-platform-console-standalone-1.10.0-M1.jar TaskTest.java
+        java -jar junit-platform-console-standalone-1.10.0-M1.jar --class-path . --scan-classpath
 
