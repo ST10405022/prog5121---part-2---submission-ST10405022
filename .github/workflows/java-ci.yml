@@ -1,1 +1,32 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Run Task Class Tests
+      run: |
+        javac Task.java
+        javac Login.java
+        javac -cp .:junit-platform-console-standalone-1.7.2.jar TaskTest.java
+        java -jar junit-platform-console-standalone-1.7.2.jar --class-path . --scan-classpath
 
